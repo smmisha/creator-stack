@@ -2,27 +2,34 @@ window.TOOLKIT_DATA = {
   ui: {
     ru: {
       brandTitle: "socialmediamisha",
-      heroTitle: "Бесплатный стек для видео и сайтов",
+      heroBadge: "Кураторский архив · 2026",
+      heroTitle: "Бесплатный стек для видео и веб-дизайна",
       heroSubtitle:
-        "51 рабочий инструмент без подписок и вотермарков: 47 полностью бесплатных или open-source и 4 честных freemium.",
-      heroCta: "Открыть каталог",
-      heroCtaSub: "51 инструмент в 6 разделах",
-      stageLabel: "Карта стека",
-      stageMeta: "Нажмите на дорожку для фильтра",
-      pauseLabel: "Пауза",
-      playLabel: "Пуск",
-      searchPlaceholder: "Поиск по стеку",
-      distributionLabel: "Инструменты по категориям",
+        "51 проверенный бесплатный, open-source и честный freemium-инструмент из закладок — без подписок, вотермарков и лишнего шума.",
+      kpiTools: "инструментов",
+      kpiCats: "категорий",
+      kpiFreeOss: "полностью free / OSS",
+      stageVideoTag: "Для видео",
+      stageVideoTitle: "Таймлайн Remotion",
+      stageVideoSub: "Код-в-видео, титры и стоки без подписок",
+      stageWebTag: "Для сайтов",
+      stageWebTitle: "Хореография UI",
+      stageWebSub: "GSAP-кривые, React Bits и токены Tailwind",
+      stageFreeTag: "Open Source",
+      stageFreeTitle: "Чистая база без подписок",
+      stageFreeSub: "47 полностью бесплатных и 4 честных freemium",
+      searchPlaceholder: "Поиск инструментов",
+      distributionLabel: "Состав каталога по категориям",
       catAll: "Все",
       purposeAll: "Все задачи",
       purposeVideo: "Для видео",
       purposeWeb: "Для сайтов",
       priceAll: "Все модели",
-      priceFree: "Free и OSS",
+      priceFree: "Free & OSS",
       priceFreemium: "Freemium",
       savedBtn: "Избранное",
       statShown: "показано",
-      copyBtn: "Копировать ссылку",
+      copyBtn: "Копировать",
       copiedBtn: "Скопировано",
       openBtn: "Открыть",
       bookmarkAdd: "Сохранить в избранное",
@@ -41,17 +48,24 @@ window.TOOLKIT_DATA = {
     },
     en: {
       brandTitle: "socialmediamisha",
+      heroBadge: "Curated archive · 2026",
       heroTitle: "Free stack for video and web design",
       heroSubtitle:
-        "51 working tools without paywalls or watermarks: 47 completely free or open-source and 4 fair freemium picks.",
-      heroCta: "Browse catalog",
-      heroCtaSub: "51 tools across 6 groups",
-      stageLabel: "Stack lanes",
-      stageMeta: "Select a lane to filter",
-      pauseLabel: "Pause",
-      playLabel: "Play",
+        "51 vetted free, open-source, and fair freemium tools for video, motion, and web design — zero paywalls or watermarked exports.",
+      kpiTools: "vetted tools",
+      kpiCats: "categories",
+      kpiFreeOss: "100% free & OSS",
+      stageVideoTag: "For video",
+      stageVideoTitle: "Remotion timeline",
+      stageVideoSub: "Code-to-video, captions, and clean stock media",
+      stageWebTag: "For web",
+      stageWebTitle: "UI motion curve",
+      stageWebSub: "GSAP easings, React Bits, and Tailwind tokens",
+      stageFreeTag: "Open Source",
+      stageFreeTitle: "Free & open-source core",
+      stageFreeSub: "47 free/OSS tools plus 4 fair freemium picks",
       searchPlaceholder: "Search tools",
-      distributionLabel: "Tools by category",
+      distributionLabel: "Catalog breakdown by category",
       catAll: "All",
       purposeAll: "All tasks",
       purposeVideo: "For video",
@@ -68,7 +82,7 @@ window.TOOLKIT_DATA = {
       bookmarkRemove: "Remove bookmark",
       targetVideo: "Video",
       targetWeb: "Web",
-      featuredTag: "Core",
+      featuredTag: "Core pick",
       pricingLabels: {
         free: "Free",
         oss: "Open Source",
@@ -83,32 +97,32 @@ window.TOOLKIT_DATA = {
   categories: [
     {
       id: "video",
-      color: "#B94A2C",
+      color: "#22C55E",
       label: { ru: "Видео и моушн", en: "Video & motion" }
     },
     {
       id: "media",
-      color: "#4C647E",
+      color: "#38BDF8",
       label: { ru: "Медиа, стоки и голос", en: "Media, stock & voice" }
     },
     {
       id: "design",
-      color: "#6F5A46",
+      color: "#A78BFA",
       label: { ru: "UI и веб-дизайн", en: "UI & web design" }
     },
     {
       id: "fonts",
-      color: "#9A6E3A",
+      color: "#F59E0B",
       label: { ru: "Шрифты и иконки", en: "Fonts & icons" }
     },
     {
       id: "skills",
-      color: "#4E6E58",
+      color: "#F472B6",
       label: { ru: "Скиллы для ИИ", en: "AI agent skills" }
     },
     {
       id: "utils",
-      color: "#7D5B69",
+      color: "#94A3B8",
       label: { ru: "Dev-утилиты", en: "Dev utilities" }
     }
   ],
@@ -345,8 +359,8 @@ window.TOOLKIT_DATA = {
         en: "Standard WebGL/WebGPU JavaScript 3D engine for interactive web scenes, shaders, and @remotion/three compositions."
       },
       caveat: {
-        ru: "100% бесплатно (MIT); используется в видеокомпозициях Vectarium и веб-сценах.",
-        en: "100% free (MIT); used across Vectarium compositions and interactive web scenes."
+        ru: "100% бесплатно (MIT); именно на ней работает 3D-кристалл в шапке этого каталога.",
+        en: "100% free (MIT); powers the live 3D sculpture in this site's hero."
       }
     },
     {

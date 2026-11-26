@@ -4,160 +4,200 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>socialmediamisha: Free Video, Motion &amp; Web Design Stack</title>
-  <meta name="description" content="51 vetted free, open-source, and fair freemium tools curated by socialmediamisha for video, motion graphics, AI design skills, and web UI.">
+  <meta name="description" content="51 vetted free, open-source, and fair freemium tools curated by socialmediamisha for programmatic video, stock media, fonts, UI systems, and AI design skills.">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://smmisha.github.io/creator-stack/">
-  <meta property="og:title" content="socialmediamisha: 51 Free Tools for Video &amp; Web Design">
-  <meta property="og:description" content="47 completely free &amp; open-source tools plus 4 fair freemium picks across Remotion, Rough.js, stock media, fonts, UI systems, and AI skills.">
+  <meta property="og:title" content="socialmediamisha — Verified Free Stack for Video &amp; Web Design">
+  <meta property="og:description" content="47 completely free &amp; open-source tools plus 4 fair freemium picks across Remotion, stock media, voice AI, UI components, fonts, and agent skills.">
   <meta property="og:image" content="https://smmisha.github.io/creator-stack/og-card.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@mihail_radzik">
-  <meta name="twitter:title" content="socialmediamisha: Free Video, Motion &amp; Web Design Stack">
-  <meta name="twitter:description" content="51 vetted free and fair freemium tools curated by socialmediamisha, split by video production and web design.">
+  <meta name="twitter:title" content="socialmediamisha — Free Video, Motion &amp; Web Design Stack">
+  <meta name="twitter:description" content="51 free &amp; fair freemium tools vetted from bookmarks, cleanly split between video production and web design.">
   <meta name="twitter:image" content="https://smmisha.github.io/creator-stack/og-card.png">
 
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20261126e">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Unbounded:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=20261126f">
 </head>
-<body id="top">
+<body>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#top">
-        <span class="brand-bezel" aria-hidden="true">
-          <span class="brand-cap"></span>
-        </span>
+      <div class="brand">
+        <img class="brand-mark" src="./favicon.svg" alt="" width="28" height="28">
         <span class="brand-name" id="brand-title">socialmediamisha</span>
-      </a>
+      </div>
 
-      <nav class="topbar-actions" aria-label="Controls">
+      <div class="topbar-actions">
         <div class="lang-switch" role="group" aria-label="Language">
           <button type="button" class="lang-btn" data-lang="ru" aria-pressed="true">RU</button>
           <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
         </div>
 
         <button type="button" class="pill saved-btn" id="saved-filter-btn" aria-pressed="false">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
           </svg>
           <span id="saved-btn-label">Избранное</span>
           <span class="pill-count" id="saved-count">0</span>
         </button>
-      </nav>
+      </div>
     </div>
   </header>
 
   <section class="hero-band" aria-labelledby="hero-title">
-    <div class="hero-grid-bg" aria-hidden="true"></div>
-    <div class="hero-blooms" aria-hidden="true"></div>
+    <canvas id="hero-3d-canvas" aria-hidden="true"></canvas>
+    <div class="hero-vignette" aria-hidden="true"></div>
 
     <div class="container hero-grid">
       <div class="hero-copy">
-        <h1 class="hero-title" id="hero-title">Бесплатный стек для видео и сайтов</h1>
+        <div class="hero-badge" id="hero-badge-wrap">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span id="hero-badge">Кураторский архив · 2026</span>
+        </div>
+
+        <h1 class="hero-title" id="hero-title">Бесплатный стек для видео и веб-дизайна</h1>
         <p class="hero-subtitle" id="hero-subtitle">
-          51 рабочий инструмент без подписок и вотермарков: 47 полностью бесплатных или open-source и 4 честных freemium.
+          51 проверенный бесплатный, open-source и честный freemium-инструмент из закладок — без подписок, вотермарков и лишнего шума.
         </p>
 
-        <div class="hero-actions">
-          <button type="button" class="rubber-cta" id="hero-jump-btn">
-            <span class="rubber-bezel" aria-hidden="true">
-              <span class="rubber-cap"></span>
-            </span>
-            <span class="rubber-cta-text">
-              <span class="rubber-cta-main" id="hero-cta-main">Открыть каталог</span>
-              <span class="rubber-cta-sub" id="hero-cta-sub">51 инструмент в 6 разделах</span>
-            </span>
-          </button>
-
-          <div class="search-wrap">
-            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="7"/>
-              <line x1="20" y1="20" x2="16.2" y2="16.2"/>
-            </svg>
-            <label for="search-input" class="sr-only" id="search-label">Поиск по стеку</label>
-            <input id="search-input" class="search-input" type="search" autocomplete="off" placeholder="Поиск по стеку">
-            <kbd class="search-kbd" aria-hidden="true">/</kbd>
+        <div class="hero-kpis" id="hero-kpis">
+          <div class="kpi-item">
+            <span class="kpi-val" data-count-target="51">51</span>
+            <span class="kpi-lbl" id="kpi-tools-lbl">инструментов</span>
           </div>
+          <div class="kpi-divider" aria-hidden="true"></div>
+          <div class="kpi-item">
+            <span class="kpi-val" data-count-target="47">47</span>
+            <span class="kpi-lbl" id="kpi-free-lbl">полностью free / OSS</span>
+          </div>
+          <div class="kpi-divider" aria-hidden="true"></div>
+          <div class="kpi-item">
+            <span class="kpi-val is-muted" data-count-target="6">6</span>
+            <span class="kpi-lbl" id="kpi-cats-lbl">категорий</span>
+          </div>
+        </div>
+
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/>
+            <line x1="20" y1="20" x2="16.2" y2="16.2"/>
+          </svg>
+          <label for="search-input" class="sr-only" id="search-label">Поиск инструментов</label>
+          <input id="search-input" class="search-input" type="search" autocomplete="off" placeholder="Поиск инструментов">
+          <kbd class="search-kbd" aria-hidden="true">/</kbd>
         </div>
       </div>
 
-      <div class="stack-stage" id="stack-stage">
-        <div class="stage-sheet">
-          <div class="stage-head">
-            <span class="stage-label" id="stage-label">Карта стека</span>
-            <span class="stage-meta" id="stage-meta">Нажмите на дорожку для фильтра</span>
+      <div class="hero-stage" id="hero-stage">
+        <button type="button" class="stage-tile stage-tile-video" id="stage-video-btn">
+          <div class="stage-tile-head">
+            <span class="stage-chip is-video" id="stage-video-tag">Для видео</span>
+            <span class="stage-mono" id="stage-timecode">00:00 → 08:44 · 60fps</span>
           </div>
-
-          <div class="stage-board" id="stage-board">
-            <div class="stage-ruler" aria-hidden="true">
-              <span>01</span>
-              <span>02</span>
-              <span>03</span>
-              <span>04</span>
-              <span>05</span>
-              <span>06</span>
+          <div class="timeline-viz" aria-hidden="true">
+            <div class="tl-track">
+              <span class="tl-clip is-green" style="left: 4%; width: 34%;">Remotion</span>
+              <span class="tl-clip is-green-dim" style="left: 41%; width: 28%;">Skills</span>
+              <span class="tl-clip is-green" style="left: 72%; width: 24%;">Three.js</span>
             </div>
+            <div class="tl-track">
+              <span class="tl-clip is-blue" style="left: 10%; width: 42%;">Openverse · CC0</span>
+              <span class="tl-clip is-blue-dim" style="left: 55%; width: 36%;">Drama 3 TTS</span>
+            </div>
+            <div class="tl-playhead"></div>
+          </div>
+          <div class="stage-tile-foot">
+            <strong class="stage-title" id="stage-video-title">Таймлайн Remotion</strong>
+            <span class="stage-sub" id="stage-video-sub">Код-в-видео, титры и стоки без подписок</span>
+          </div>
+        </button>
 
-            <div class="stage-lanes" id="stage-lanes">
-              <div class="stage-playhead-track" aria-hidden="true">
-                <div class="stage-playhead" id="stage-playhead"></div>
+        <div class="stage-bottom-pair">
+          <button type="button" class="stage-tile stage-tile-web" id="stage-web-btn">
+            <div class="stage-tile-head">
+              <span class="stage-chip is-web" id="stage-web-tag">Для сайтов</span>
+              <span class="stage-mono">cubic-bezier</span>
+            </div>
+            <div class="curve-viz" aria-hidden="true">
+              <svg viewBox="0 0 180 76" width="180" height="76" fill="none">
+                <line x1="12" y1="64" x2="168" y2="64" stroke="rgba(241,243,245,0.08)" stroke-width="1"/>
+                <line x1="12" y1="14" x2="168" y2="14" stroke="rgba(241,243,245,0.08)" stroke-width="1"/>
+                <path id="bezier-path" d="M 12 64 C 54 64, 58 14, 168 14" stroke="#A78BFA" stroke-width="2" stroke-linecap="round"/>
+                <circle id="bezier-dot" cx="12" cy="64" r="4.5" fill="#F1F3F5" stroke="#A78BFA" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="stage-tile-foot">
+              <strong class="stage-title" id="stage-web-title">Хореография UI</strong>
+              <span class="stage-sub" id="stage-web-sub">GSAP-кривые, React Bits и токены Tailwind</span>
+            </div>
+          </button>
+
+          <button type="button" class="stage-tile stage-tile-audit" id="stage-free-btn">
+            <div class="stage-tile-head">
+              <span class="stage-chip is-audit" id="stage-free-tag">Open Source</span>
+              <span class="stage-mono">47 / 51</span>
+            </div>
+            <div class="ratio-viz" aria-hidden="true">
+              <div class="ratio-bar">
+                <span class="ratio-fill-ok"></span>
+                <span class="ratio-fill-freemium"></span>
               </div>
-              <div class="stage-lanes-list" id="stage-lanes-list"></div>
+              <div class="ratio-legend">
+                <span>Free &amp; OSS · 47</span>
+                <span>Freemium · 4</span>
+              </div>
             </div>
-          </div>
-
-          <div class="stage-foot">
-            <button type="button" class="stage-play-btn" id="stage-toggle-btn" aria-pressed="false">
-              <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <rect x="6" y="5" width="4" height="14" rx="1"/>
-                <rect x="14" y="5" width="4" height="14" rx="1"/>
-              </svg>
-              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <polygon points="7 5 19 12 7 19"/>
-              </svg>
-              <span id="stage-toggle-label">Пауза</span>
-            </button>
-            <span class="stage-summary" id="stage-summary">47 Free / OSS, 4 Freemium</span>
-          </div>
+            <div class="stage-tile-foot">
+              <strong class="stage-title" id="stage-free-title">Чистая база без подписок</strong>
+              <span class="stage-sub" id="stage-free-sub">47 полностью бесплатных и 4 честных freemium</span>
+            </div>
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <main class="container catalog-main" id="catalog-start">
-    <section class="index-summary" aria-label="Catalog summary">
-      <div class="index-summary-top">
-        <div class="index-figure-group">
-          <span class="serif-figure" aria-hidden="true">51</span>
-          <div>
-            <h2 class="index-heading" id="breakdown-label">Инструменты по категориям</h2>
-            <span class="index-counter" id="shown-counter">51 / 51 показано</span>
-          </div>
-        </div>
-      </div>
+  <div class="marquee-section" aria-hidden="true">
+    <div class="marquee-track" id="marquee-track"></div>
+  </div>
 
-      <div class="breakdown-track" id="breakdown-track" role="group" aria-label="Category breakdown"></div>
-      <div class="breakdown-legend" id="breakdown-legend"></div>
+  <main class="container" id="catalog-start">
+    <section class="breakdown-section" aria-label="Catalog breakdown">
+      <div class="breakdown-card">
+        <div class="breakdown-head">
+          <span class="breakdown-label" id="breakdown-label">Состав каталога по категориям</span>
+          <span class="breakdown-count" id="shown-counter">51 / 51 показано</span>
+        </div>
+        <div class="breakdown-track" id="breakdown-track" role="group" aria-label="Category breakdown"></div>
+        <div class="breakdown-legend" id="breakdown-legend"></div>
+      </div>
     </section>
 
     <section class="filters-bar" aria-label="Filters">
-      <div class="pill-group" id="category-pills" role="group" aria-label="Categories"></div>
+      <div class="filter-row">
+        <div class="pill-group" id="category-pills" role="group" aria-label="Categories"></div>
+      </div>
 
-      <div class="sub-controls">
-        <div class="segmented" id="purpose-group" role="group" aria-label="Purpose">
-          <button type="button" class="seg-btn" data-purpose="all" aria-pressed="true">Все задачи</button>
-          <button type="button" class="seg-btn" data-purpose="video" aria-pressed="false">Для видео</button>
-          <button type="button" class="seg-btn" data-purpose="web" aria-pressed="false">Для сайтов</button>
-        </div>
+      <div class="filter-row">
+        <div class="sub-controls">
+          <div class="segmented" id="purpose-group" role="group" aria-label="Purpose">
+            <button type="button" class="seg-btn" data-purpose="all" aria-pressed="true">Все задачи</button>
+            <button type="button" class="seg-btn" data-purpose="video" aria-pressed="false">Для видео</button>
+            <button type="button" class="seg-btn" data-purpose="web" aria-pressed="false">Для сайтов</button>
+          </div>
 
-        <div class="segmented" id="pricing-group" role="group" aria-label="Pricing tier">
-          <button type="button" class="seg-btn" data-pricing="all" aria-pressed="true">Все модели</button>
-          <button type="button" class="seg-btn" data-pricing="free_oss" aria-pressed="false">Free и OSS</button>
-          <button type="button" class="seg-btn" data-pricing="freemium" aria-pressed="false">Freemium</button>
+          <div class="segmented" id="pricing-group" role="group" aria-label="Pricing tier">
+            <button type="button" class="seg-btn" data-pricing="all" aria-pressed="true">Все модели</button>
+            <button type="button" class="seg-btn" data-pricing="free_oss" aria-pressed="false">Free &amp; OSS</button>
+            <button type="button" class="seg-btn" data-pricing="freemium" aria-pressed="false">Freemium</button>
+          </div>
         </div>
       </div>
     </section>
@@ -173,22 +213,21 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div class="footer-brand-col">
-        <strong class="footer-brand">socialmediamisha</strong>
-        <p class="footer-note" id="footer-left">Открытый каталог socialmediamisha без трекеров и сборки</p>
-      </div>
-
-      <div class="footer-links" aria-label="Social channels">
+      <span id="footer-left">Открытый каталог socialmediamisha без трекеров и сборки</span>
+      <nav class="footer-links" aria-label="socialmediamisha">
         <a href="https://t.me/socialmediamisha" target="_blank" rel="noopener noreferrer">Telegram</a>
         <a href="https://www.youtube.com/@SocialMediaMisha" target="_blank" rel="noopener noreferrer">YouTube</a>
-        <a href="https://x.com/mihail_radzik" target="_blank" rel="noopener noreferrer">X (@mihail_radzik)</a>
-      </div>
+        <a href="https://x.com/mihail_radzik" target="_blank" rel="noopener noreferrer">X</a>
+      </nav>
     </div>
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="./data.js?v=20261126e" defer></script>
-  <script src="./app.js?v=20261126e" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+  <script src="./data.js?v=20261126f" defer></script>
+  <script src="./app.js?v=20261126f" defer></script>
+  <script type="module" src="./hero-3d.js?v=20261126f"></script>
 </body>
 </html>
