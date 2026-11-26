@@ -617,14 +617,14 @@ button {
 }
 
 .ratio-fill-ok {
-  width: 74.5%;
+  width: 79.7%;
   height: 100%;
   border-radius: 4px;
   background-color: var(--accent);
 }
 
 .ratio-fill-drop {
-  width: 25.5%;
+  width: 20.3%;
   height: 100%;
   border-radius: 4px;
   background-color: rgba(241, 243, 245, 0.18);

@@ -6,7 +6,7 @@ window.TOOLKIT_DATA = {
       heroBadge: "Кураторский архив · 2026",
       heroTitle: "Бесплатный стек для видео и веб-дизайна",
       heroSubtitle:
-        "38 бесплатных, open-source и честных freemium-инструментов из закладок. 13 платных сервисов и генераторов с вотермарками отсеяны вручную.",
+        "51 бесплатный, open-source и честный freemium-инструмент из закладок. 13 платных сервисов и генераторов с вотермарками отсеяны вручную.",
       kpiTools: "инструментов",
       kpiCats: "категорий",
       kpiFiltered: "платных отсеяно",
@@ -59,7 +59,7 @@ window.TOOLKIT_DATA = {
       heroBadge: "Curated archive · 2026",
       heroTitle: "Free stack for video and web design",
       heroSubtitle:
-        "38 free, open-source, and honest freemium tools vetted from bookmarks. 13 paywalled or watermarked services were filtered out.",
+        "51 free, open-source, and honest freemium tool vetted from bookmarks. 13 paywalled or watermarked services were filtered out.",
       kpiTools: "vetted tools",
       kpiCats: "categories",
       kpiFiltered: "paid filtered out",
@@ -269,6 +269,150 @@ window.TOOLKIT_DATA = {
         en: "Hosted web service uses credits, while the GitHub core runs freely under Apache 2.0."
       }
     },
+    {
+      id: "video-use",
+      name: "video-use",
+      url: "https://github.com/browser-use/video-use",
+      domain: "github.com/browser-use/video-use",
+      category: "video",
+      pricing: "oss",
+      targets: ["video"],
+      featured: true,
+      desc: {
+        ru: "Open-source агентский монтаж из сырых футажей: вырезка пауз, цветокор, титры и оверлеи в Remotion/HyperFrames.",
+        en: "Open-source agentic video editor: trims dead air and fillers, color grades, burns captions, and renders final.mp4."
+      },
+      caveat: {
+        ru: "Лицензия MIT; в базовой сборке просит ElevenLabs API key для транскрибации (есть бесплатный лимит или замена на локальный Whisper).",
+        en: "MIT open source; default setup asks for an ElevenLabs API key for transcription (free tier available or swap local Whisper)."
+      }
+    },
+    {
+      id: "line-art-animation",
+      name: "line-art-animation",
+      url: "https://github.com/JDhruv14/line-art-animation",
+      domain: "github.com/JDhruv14/line-art-animation",
+      category: "video",
+      pricing: "oss",
+      targets: ["video", "web"],
+      featured: true,
+      desc: {
+        ru: "TypeScript-библиотека и скилл для нарисованных чернилами SVG-персонажей, походки, сцен день/ночь и покадрового экспорта.",
+        en: "Claude skill and dependency-free TypeScript library for animated hand-drawn ink SVG figures, gaits, and day/night scenes."
+      },
+      caveat: {
+        ru: "MIT-лицензия; отлично ложится в Remotion-пайплайн для анимированных скетчей и историй.",
+        en: "MIT license; exports crisp SVG frames ideal for Remotion and interactive storytelling."
+      }
+    },
+    {
+      id: "roughjs",
+      name: "Rough.js",
+      url: "https://github.com/rough-stuff/rough",
+      domain: "github.com/rough-stuff/rough",
+      category: "video",
+      pricing: "oss",
+      targets: ["video", "web"],
+      featured: true,
+      desc: {
+        ru: "Лёгкая графика в стиле рисунка от руки для Canvas и SVG — живые схемы, рамки, диаграммы и скетч-титры.",
+        en: "Lightweight graphics library rendering SVG and Canvas primitives with a natural hand-drawn sketchy aesthetic."
+      },
+      caveat: {
+        ru: "100% бесплатно (MIT); работает прямо в браузере и внутри композиций Remotion.",
+        en: "100% free (MIT); integrates directly into React/Remotion compositions and web canvases."
+      }
+    },
+    {
+      id: "motion-canvas",
+      name: "Motion Canvas",
+      url: "https://github.com/motion-canvas/motion-canvas",
+      domain: "github.com/motion-canvas/motion-canvas",
+      category: "video",
+      pricing: "oss",
+      targets: ["video"],
+      featured: false,
+      desc: {
+        ru: "Визуальный редактор + TypeScript-генератор процедурной 2D-анимации и технических объяснялок синхронно со звуком.",
+        en: "Code-driven TypeScript 2D animation library paired with a real-time browser preview editor synced to audio."
+      },
+      caveat: {
+        ru: "MIT-лицензия; мощная альтернатива для инфографики и схем без React.",
+        en: "MIT open source; strong fit for diagrams, technical explainers, and synced motion."
+      }
+    },
+    {
+      id: "scarlet",
+      name: "Scarlet",
+      url: "https://github.com/Forward-Future/scarlet",
+      domain: "github.com/Forward-Future/scarlet",
+      category: "video",
+      pricing: "oss",
+      targets: ["video"],
+      featured: false,
+      desc: {
+        ru: "Настольный open-source AI-видеоредактор под Windows и macOS: правки голосом/текстом, встроенный Whisper и версионные склейки.",
+        en: "Open-source desktop AI video editor for Windows/macOS/Linux with bundled local Whisper and non-destructive agent cutlists."
+      },
+      caveat: {
+        ru: "MIT; локальная транскрибация работает из коробки, а агент подключается по вашей подписке Claude Code или Codex.",
+        en: "MIT; local Whisper transcription is built in, while coding agents connect via your existing Claude Code or Codex setup."
+      }
+    },
+    {
+      id: "threejs",
+      name: "Three.js",
+      url: "https://github.com/mrdoob/three.js",
+      domain: "github.com/mrdoob/three.js",
+      category: "video",
+      pricing: "oss",
+      targets: ["video", "web"],
+      featured: true,
+      desc: {
+        ru: "Главная WebGL-библиотека для 3D-сцен, частиц, шейдеров и камер прямо в браузере, на лендингах и в Remotion.",
+        en: "Standard WebGL/WebGPU JavaScript 3D engine for interactive web scenes, shaders, and @remotion/three compositions."
+      },
+      caveat: {
+        ru: "100% бесплатно (MIT); именно на ней работает 3D-кристалл в шапке этого каталога.",
+        en: "100% free (MIT); powers the live 3D sculpture in this site's hero."
+      }
+    },
+    {
+      id: "blender-mcp",
+      name: "Blender MCP",
+      url: "https://github.com/ahujasid/mcp-for-blender",
+      domain: "github.com/ahujasid/mcp-for-blender",
+      category: "video",
+      pricing: "oss",
+      targets: ["video"],
+      featured: false,
+      desc: {
+        ru: "MCP-мост, через который ИИ-агент напрямую создаёт 3D-модели, материалы, свет и рендеры в локальном Blender.",
+        en: "Open-source MCP bridge letting AI agents build 3D meshes, materials, lighting, and renders directly inside Blender."
+      },
+      caveat: {
+        ru: "MIT; работает полностью локально в связке с бесплатным Blender 4.x/5.x.",
+        en: "MIT; runs 100% locally alongside free open-source Blender."
+      }
+    },
+    {
+      id: "ffmpeg",
+      name: "FFmpeg",
+      url: "https://github.com/FFmpeg/FFmpeg",
+      domain: "github.com/FFmpeg/FFmpeg",
+      category: "video",
+      pricing: "oss",
+      targets: ["video"],
+      featured: true,
+      desc: {
+        ru: "Незаменимый консольный движок для склейки, перекодирования, громкости (loudnorm), субтитров и нарезки 9:16 / 16:9.",
+        en: "Essential open-source CLI engine for transcoding, loudnorm audio mastering, muxing, clipping, and final feed exports."
+      },
+      caveat: {
+        ru: "Полностью бесплатный стандарт индустрии под капотом Remotion и видеопайплайнов.",
+        en: "Completely free industry backbone powering Remotion and automated video pipelines."
+      }
+    },
 
     // 2. Media, stock & voice (7)
     {
@@ -395,6 +539,24 @@ window.TOOLKIT_DATA = {
       caveat: {
         ru: "Дневные лимиты бесплатных генераций; приоритетный просчёт от $5/мес.",
         en: "Daily free credit cap; priority queues and heavier batches require paid plans (~$5/mo)."
+      }
+    },
+    {
+      id: "real-esrgan",
+      name: "Real-ESRGAN",
+      url: "https://github.com/xinntao/Real-ESRGAN",
+      domain: "github.com/xinntao/Real-ESRGAN",
+      category: "media",
+      pricing: "oss",
+      targets: ["video", "web"],
+      featured: true,
+      desc: {
+        ru: "Бесплатный локальный AI-апскейлер старых архивных фото, 2D-иллюстраций и видеофрагментов без вотермарков.",
+        en: "Open-source local AI upscaler restoring blurry archival photos, illustrations, and video clips without watermarks."
+      },
+      caveat: {
+        ru: "Лицензия BSD-3; полноценная бесплатная альтернатива дорогому Topaz Labs на вашем ПК.",
+        en: "BSD-3-Clause; free local replacement for paid desktop upscalers like Topaz Labs."
       }
     },
 
@@ -597,6 +759,24 @@ window.TOOLKIT_DATA = {
         en: "Free tier includes an element cap that easily covers several project moodboards."
       }
     },
+    {
+      id: "sakuga-vfx",
+      name: "Sakuga VFX",
+      url: "https://github.com/finktheartist/sakuga-vfx",
+      domain: "github.com/finktheartist/sakuga-vfx",
+      category: "design",
+      pricing: "oss",
+      targets: ["web"],
+      featured: false,
+      desc: {
+        ru: "12 однофайловых веб-компонентов (кнопки, свитчеры, тосты) с аниме-эффектами дыма, вспышек и физики нажатий.",
+        en: "Twelve dependency-free single-file UI controls firing hand-drawn anime smoke puffs, bursts, and spring impacts."
+      },
+      caveat: {
+        ru: "MIT-лицензия; без сборок и внешних запросов — для смелых промо-страниц.",
+        en: "MIT license; zero dependencies and self-contained assets for expressive promo UIs."
+      }
+    },
 
     // 4. Fonts & icons (5)
     {
@@ -761,6 +941,60 @@ window.TOOLKIT_DATA = {
       caveat: {
         ru: "Открытые инструкции (MIT / Apache 2.0).",
         en: "Free open-source guidelines repository."
+      }
+    },
+    {
+      id: "impeccable",
+      name: "Impeccable",
+      url: "https://github.com/pbakaus/impeccable",
+      domain: "github.com/pbakaus/impeccable",
+      category: "skills",
+      pricing: "oss",
+      targets: ["web"],
+      featured: true,
+      desc: {
+        ru: "Дизайн-лексикон и аудит для агентов (`polish`, `bolder`, `critique`, `audit`) + детектор из 62 правил против ИИ-штампов.",
+        en: "Agent design vocabulary (polish, bolder, critique, audit) plus a 62-rule deterministic anti-slop linter."
+      },
+      caveat: {
+        ru: "Apache 2.0; официально поддерживает Antigravity, Claude Code и Codex.",
+        en: "Apache 2.0; native install support for Antigravity, Claude Code, and Codex."
+      }
+    },
+    {
+      id: "hallmark",
+      name: "Hallmark",
+      url: "https://github.com/Nutlope/hallmark",
+      domain: "github.com/Nutlope/hallmark",
+      category: "skills",
+      pricing: "oss",
+      targets: ["web"],
+      featured: true,
+      desc: {
+        ru: "Скилл против «машинного» дизайна от Together AI: 50 проработанных тем, гейты качества и 755 фото с Wikimedia Commons.",
+        en: "Anti-AI-slop design skill by Together AI packing 50 themes, quality floor gates, and 755 open-licensed photos."
+      },
+      caveat: {
+        ru: "MIT-лицензия; проверяет реальный рендер в браузере на контраст, типографику и поломки на телефоне.",
+        en: "MIT license; enforces contrast, layout, and mobile checks directly in headless browser verification."
+      }
+    },
+    {
+      id: "mengto-skills",
+      name: "Meng To Skills",
+      url: "https://github.com/MengTo/Skills",
+      domain: "github.com/MengTo/Skills",
+      category: "skills",
+      pricing: "oss",
+      targets: ["web"],
+      featured: false,
+      desc: {
+        ru: "Коллекция плейбуков по веб-дизайну, Three.js-шейдерам, оптимизации анимаций и 14 стилям SVG-иллюстраций.",
+        en: "Portable UI, Three.js 3D, WebGL optimization, and 14-style SVG illustration playbooks for AI coding agents."
+      },
+      caveat: {
+        ru: "MIT-лицензия; можно брать отдельные папки скиллов под конкретные сцены и эффекты.",
+        en: "MIT license; modular SKILL.md folders tailored to individual visual techniques."
       }
     },
 
