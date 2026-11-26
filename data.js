@@ -6,19 +6,19 @@ window.TOOLKIT_DATA = {
       heroBadge: "Кураторский архив · 2026",
       heroTitle: "Бесплатный стек для видео и веб-дизайна",
       heroSubtitle:
-        "51 бесплатный, open-source и честный freemium-инструмент из закладок. 13 платных сервисов и генераторов с вотермарками отсеяны вручную.",
+        "51 проверенный бесплатный, open-source и честный freemium-инструмент из закладок — без подписок, вотермарков и лишнего шума.",
       kpiTools: "инструментов",
       kpiCats: "категорий",
-      kpiFiltered: "платных отсеяно",
+      kpiFreeOss: "полностью free / OSS",
       stageVideoTag: "Для видео",
       stageVideoTitle: "Таймлайн Remotion",
       stageVideoSub: "Код-в-видео, титры и стоки без подписок",
       stageWebTag: "Для сайтов",
       stageWebTitle: "Хореография UI",
       stageWebSub: "GSAP-кривые, React Bits и токены Tailwind",
-      stageAuditTag: "Аудит тарифов",
-      stageAuditTitle: "Фильтр без вотермарков",
-      stageAuditSub: "13 платных обёрток исключены из списка",
+      stageFreeTag: "Open Source",
+      stageFreeTitle: "Чистая база без подписок",
+      stageFreeSub: "47 полностью бесплатных и 4 честных freemium",
       searchPlaceholder: "Поиск инструментов",
       distributionLabel: "Состав каталога по категориям",
       catAll: "Все",
@@ -45,11 +45,6 @@ window.TOOLKIT_DATA = {
       },
       emptyTitle: "По этим фильтрам совпадений нет",
       emptyAction: "Сбросить фильтры",
-      rejectedSummary: "Отсеяно вручную: 13 платных сервисов и инструментов с вотермарками",
-      rejectedIntro:
-        "Эти ссылки встречались в подборках X, но были исключены из основного каталога после проверки тарифов и экспортов.",
-      rejectedColTool: "Сервис",
-      rejectedColReason: "Причина исключения",
       footerLeft: "Статический каталог для GitHub Pages без трекеров и сборки",
       footerRight: "Оформление по принципам unslop (CC BY 4.0 @heydamir)"
     },
@@ -59,19 +54,19 @@ window.TOOLKIT_DATA = {
       heroBadge: "Curated archive · 2026",
       heroTitle: "Free stack for video and web design",
       heroSubtitle:
-        "51 free, open-source, and honest freemium tool vetted from bookmarks. 13 paywalled or watermarked services were filtered out.",
+        "51 vetted free, open-source, and fair freemium tools for video, motion, and web design — zero paywalls or watermarked exports.",
       kpiTools: "vetted tools",
       kpiCats: "categories",
-      kpiFiltered: "paid filtered out",
+      kpiFreeOss: "100% free & OSS",
       stageVideoTag: "For video",
       stageVideoTitle: "Remotion timeline",
       stageVideoSub: "Code-to-video, captions, and clean stock media",
       stageWebTag: "For web",
       stageWebTitle: "UI motion curve",
       stageWebSub: "GSAP easings, React Bits, and Tailwind tokens",
-      stageAuditTag: "Pricing audit",
-      stageAuditTitle: "Zero-watermark filter",
-      stageAuditSub: "13 paywalled traps listed openly below",
+      stageFreeTag: "Open Source",
+      stageFreeTitle: "Free & open-source core",
+      stageFreeSub: "47 free/OSS tools plus 4 fair freemium picks",
       searchPlaceholder: "Search tools",
       distributionLabel: "Catalog breakdown by category",
       catAll: "All",
@@ -98,11 +93,6 @@ window.TOOLKIT_DATA = {
       },
       emptyTitle: "No tools match these filters",
       emptyAction: "Reset filters",
-      rejectedSummary: "Filtered out: 13 paywalled and watermarked tools",
-      rejectedIntro:
-        "These sites showed up in X threads, but failed the no-paywall and clean-export audit.",
-      rejectedColTool: "Service",
-      rejectedColReason: "Why it was filtered out",
       footerLeft: "Static GitHub Pages directory with zero build step and zero trackers",
       footerRight: "Craft discipline informed by unslop (CC BY 4.0 @heydamir)"
     }
@@ -1069,113 +1059,6 @@ window.TOOLKIT_DATA = {
       caveat: {
         ru: "Бесплатное браузерное расширение — удобно собирать сценарии и промпты в локальную базу.",
         en: "Free browser extension; great for archiving scripts and prompt threads locally."
-      }
-    }
-  ],
-
-  rejected: [
-    {
-      name: "Vibiz AI",
-      domain: "vibiz.ai",
-      reason: {
-        ru: "Строго платный (от $63–$79/мес), нет даже бесплатного триала; заточен под рекламные кабинеты.",
-        en: "Strictly paid (~$63–$79/mo) with no free plan or trial."
-      }
-    },
-    {
-      name: "Pamba",
-      domain: "pamba.app",
-      reason: {
-        ru: "B2B-конвейер UGC-ботов под стартапы с платными тарифами от $100+/мес.",
-        en: "Startup UGC automation platform with paid plans starting at $100+/mo."
-      }
-    },
-    {
-      name: "Topaz Labs",
-      domain: "topazlabs.com",
-      reason: {
-        ru: "Тяжёлый платный десктоп (~$299+/год), демо с жёстким вотермарком.",
-        en: "Expensive yearly suite (~$299+/yr) with watermarked trials."
-      }
-    },
-    {
-      name: "Topview AI",
-      domain: "topview.ai",
-      reason: {
-        ru: "Только 10 одноразовых кредитов, вотермарк на free; дальше $16–$29+/мес.",
-        en: "Tiny 10-credit trial with watermarks; $16–$29+/mo afterwards."
-      }
-    },
-    {
-      name: "Viggle AI",
-      domain: "viggle.ai",
-      reason: {
-        ru: "Бесплатные ролики выходят с логотипом Viggle; снятие вотермарка от $8–$10/мес.",
-        en: "Free exports carry a watermark; paid Pro tier required to remove it."
-      }
-    },
-    {
-      name: "AutoAE",
-      domain: "autoae.online",
-      reason: {
-        ru: "В free лишь 720p с вотермарком и запретом на коммерцию — всё это уже делает наш Remotion бесплатно.",
-        en: "Free tier limits to 720p non-commercial with watermark; replaced by local Remotion."
-      }
-    },
-    {
-      name: "PaperAnimator",
-      domain: "paperanimator.com",
-      reason: {
-        ru: "На бесплатном экспорте ставит вотермарк (720p), снятие стоит кредитов.",
-        en: "Free 720p exports include watermarks unless credits are purchased."
-      }
-    },
-    {
-      name: "Scrolltide",
-      domain: "scrolltide.co",
-      reason: {
-        ru: "Несмотря на слухи в X, библиотека шаблонов платная ($29–$39/мес или $144/год).",
-        en: "Marketed as free in X hype posts, actually gated behind $29–$39/mo or $144/yr pricing."
-      }
-    },
-    {
-      name: "Mobbin",
-      domain: "mobbin.com",
-      reason: {
-        ru: "Бесплатно урезан до 3 коллекций без потоков и фильтров; рабочий доступ $10–$15/мес.",
-        en: "Heavily capped free preview; real library workflow requires $10–$15/mo Pro."
-      }
-    },
-    {
-      name: "Refero",
-      domain: "refero.design",
-      reason: {
-        ru: "Поиск, user flows и интеграции закрыты за подпиской $10–$20/мес.",
-        en: "Core search, user flows, and Figma/MCP integrations require paid subscription."
-      }
-    },
-    {
-      name: "LottieFiles",
-      domain: "lottiefiles.com",
-      reason: {
-        ru: "Жёсткий пожизненный лимит на бесплатные загрузки/скачивания в воркспейсе.",
-        en: "Strict lifetime upload/download cap on free Starter workspaces."
-      }
-    },
-    {
-      name: "Krea AI",
-      domain: "krea.ai",
-      reason: {
-        ru: "На бесплатном плане нет коммерческих прав и закрыт качественный апскейл.",
-        en: "Commercial license rights and flagship upscaling require paid plans."
-      }
-    },
-    {
-      name: "Stickers.wiki",
-      domain: "stickers.wiki",
-      reason: {
-        ru: "Каталог стикеров для мессенджеров без очищенных прав для коммерческого YouTube.",
-        en: "Messaging sticker dump lacking commercial licensing for monetized video."
       }
     }
   ]

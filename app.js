@@ -45,12 +45,12 @@
     heroTitle: document.getElementById("hero-title"),
     heroSubtitle: document.getElementById("hero-subtitle"),
     kpiToolsLbl: document.getElementById("kpi-tools-lbl"),
+    kpiFreeLbl: document.getElementById("kpi-free-lbl"),
     kpiCatsLbl: document.getElementById("kpi-cats-lbl"),
-    kpiFilteredLbl: document.getElementById("kpi-filtered-lbl"),
     heroStage: document.getElementById("hero-stage"),
     stageVideoBtn: document.getElementById("stage-video-btn"),
     stageWebBtn: document.getElementById("stage-web-btn"),
-    stageAuditBtn: document.getElementById("stage-audit-btn"),
+    stageFreeBtn: document.getElementById("stage-free-btn"),
     stageVideoTag: document.getElementById("stage-video-tag"),
     stageVideoTitle: document.getElementById("stage-video-title"),
     stageVideoSub: document.getElementById("stage-video-sub"),
@@ -58,9 +58,9 @@
     stageWebTag: document.getElementById("stage-web-tag"),
     stageWebTitle: document.getElementById("stage-web-title"),
     stageWebSub: document.getElementById("stage-web-sub"),
-    stageAuditTag: document.getElementById("stage-audit-tag"),
-    stageAuditTitle: document.getElementById("stage-audit-title"),
-    stageAuditSub: document.getElementById("stage-audit-sub"),
+    stageFreeTag: document.getElementById("stage-free-tag"),
+    stageFreeTitle: document.getElementById("stage-free-title"),
+    stageFreeSub: document.getElementById("stage-free-sub"),
     bezierPath: document.getElementById("bezier-path"),
     bezierDot: document.getElementById("bezier-dot"),
     marqueeTrack: document.getElementById("marquee-track"),
@@ -80,12 +80,6 @@
     emptyBox: document.getElementById("empty-box"),
     emptyTitle: document.getElementById("empty-title"),
     resetFiltersBtn: document.getElementById("reset-filters-btn"),
-    auditBox: document.getElementById("audit-box"),
-    rejectedSummary: document.getElementById("rejected-summary"),
-    rejectedIntro: document.getElementById("rejected-intro"),
-    rejectedColTool: document.getElementById("rejected-col-tool"),
-    rejectedColReason: document.getElementById("rejected-col-reason"),
-    rejectedTbody: document.getElementById("rejected-tbody"),
     footerLeft: document.getElementById("footer-left"),
     footerRight: document.getElementById("footer-right"),
     toast: document.getElementById("toast")
@@ -473,33 +467,6 @@
     }
   }
 
-  function renderRejected() {
-    const T = DATA.ui[state.lang];
-    els.rejectedSummary.textContent = T.rejectedSummary;
-    els.rejectedIntro.textContent = T.rejectedIntro;
-    els.rejectedColTool.textContent = T.rejectedColTool;
-    els.rejectedColReason.textContent = T.rejectedColReason;
-    els.rejectedTbody.textContent = "";
-
-    DATA.rejected.forEach(function (item) {
-      const tr = document.createElement("tr");
-      const tdName = document.createElement("td");
-      tdName.className = "rejected-name";
-      tdName.textContent = item.name;
-      const dom = document.createElement("span");
-      dom.className = "rejected-domain";
-      dom.textContent = item.domain;
-      tdName.appendChild(dom);
-
-      const tdReason = document.createElement("td");
-      tdReason.textContent = item.reason[state.lang];
-
-      tr.appendChild(tdName);
-      tr.appendChild(tdReason);
-      els.rejectedTbody.appendChild(tr);
-    });
-  }
-
   function setHeroTitleWords(text, animateWords) {
     els.heroTitle.textContent = "";
     const words = String(text || "").trim().split(/\s+/);
@@ -542,17 +509,17 @@
     setHeroTitleWords(T.heroTitle, Boolean(animateTitle));
     els.heroSubtitle.textContent = T.heroSubtitle;
     els.kpiToolsLbl.textContent = T.kpiTools;
+    els.kpiFreeLbl.textContent = T.kpiFreeOss;
     els.kpiCatsLbl.textContent = T.kpiCats;
-    els.kpiFilteredLbl.textContent = T.kpiFiltered;
     els.stageVideoTag.textContent = T.stageVideoTag;
     els.stageVideoTitle.textContent = T.stageVideoTitle;
     els.stageVideoSub.textContent = T.stageVideoSub;
     els.stageWebTag.textContent = T.stageWebTag;
     els.stageWebTitle.textContent = T.stageWebTitle;
     els.stageWebSub.textContent = T.stageWebSub;
-    els.stageAuditTag.textContent = T.stageAuditTag;
-    els.stageAuditTitle.textContent = T.stageAuditTitle;
-    els.stageAuditSub.textContent = T.stageAuditSub;
+    els.stageFreeTag.textContent = T.stageFreeTag;
+    els.stageFreeTitle.textContent = T.stageFreeTitle;
+    els.stageFreeSub.textContent = T.stageFreeSub;
     els.searchInput.placeholder = T.searchPlaceholder;
     els.breakdownLabel.textContent = T.distributionLabel;
     els.savedBtnLabel.textContent = T.savedBtn;
@@ -583,7 +550,6 @@
     renderBreakdown();
     renderCategoryPills();
     renderGrid(Boolean(shouldAnimateGrid));
-    renderRejected();
   }
 
   // Interactive cursor spotlight on tool cards + Liquid Glass glint on Hero Stage tiles
@@ -738,9 +704,13 @@
     els.catalogStart.scrollIntoView({ behavior: motionPaused ? "auto" : "smooth", block: "start" });
   });
 
-  els.stageAuditBtn.addEventListener("click", function () {
-    els.auditBox.open = true;
-    els.auditBox.scrollIntoView({ behavior: motionPaused ? "auto" : "smooth", block: "start" });
+  els.stageFreeBtn.addEventListener("click", function () {
+    state.category = "all";
+    state.purpose = "all";
+    state.savedOnly = false;
+    state.pricing = "free_oss";
+    renderAll(true, false);
+    els.catalogStart.scrollIntoView({ behavior: motionPaused ? "auto" : "smooth", block: "start" });
   });
 
   // Event wiring
