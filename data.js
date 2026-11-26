@@ -1,36 +1,28 @@
 window.TOOLKIT_DATA = {
   ui: {
     ru: {
-      brandTitle: "Creator Stack",
-      authorLabel: "Собрано @mihail_radzik",
-      heroBadge: "Кураторский архив · 2026",
-      heroTitle: "Бесплатный стек для видео и веб-дизайна",
+      brandTitle: "socialmediamisha",
+      heroTitle: "Бесплатный стек для видео и сайтов",
       heroSubtitle:
-        "51 проверенный бесплатный, open-source и честный freemium-инструмент из закладок — без подписок, вотермарков и лишнего шума.",
-      kpiTools: "инструментов",
-      kpiCats: "категорий",
-      kpiFreeOss: "полностью free / OSS",
-      stageVideoTag: "Для видео",
-      stageVideoTitle: "Таймлайн Remotion",
-      stageVideoSub: "Код-в-видео, титры и стоки без подписок",
-      stageWebTag: "Для сайтов",
-      stageWebTitle: "Хореография UI",
-      stageWebSub: "GSAP-кривые, React Bits и токены Tailwind",
-      stageFreeTag: "Open Source",
-      stageFreeTitle: "Чистая база без подписок",
-      stageFreeSub: "47 полностью бесплатных и 4 честных freemium",
-      searchPlaceholder: "Поиск инструментов",
-      distributionLabel: "Состав каталога по категориям",
+        "51 рабочий инструмент без подписок и вотермарков: 47 полностью бесплатных или open-source и 4 честных freemium.",
+      heroCta: "Открыть каталог",
+      heroCtaSub: "51 инструмент в 6 разделах",
+      stageLabel: "Карта стека",
+      stageMeta: "Нажмите на дорожку для фильтра",
+      pauseLabel: "Пауза",
+      playLabel: "Пуск",
+      searchPlaceholder: "Поиск по стеку",
+      distributionLabel: "Инструменты по категориям",
       catAll: "Все",
       purposeAll: "Все задачи",
       purposeVideo: "Для видео",
       purposeWeb: "Для сайтов",
       priceAll: "Все модели",
-      priceFree: "Free & OSS",
+      priceFree: "Free и OSS",
       priceFreemium: "Freemium",
       savedBtn: "Избранное",
       statShown: "показано",
-      copyBtn: "Копировать",
+      copyBtn: "Копировать ссылку",
       copiedBtn: "Скопировано",
       openBtn: "Открыть",
       bookmarkAdd: "Сохранить в избранное",
@@ -45,30 +37,21 @@ window.TOOLKIT_DATA = {
       },
       emptyTitle: "По этим фильтрам совпадений нет",
       emptyAction: "Сбросить фильтры",
-      footerLeft: "Статический каталог для GitHub Pages без трекеров и сборки",
-      footerRight: "Оформление по принципам unslop (CC BY 4.0 @heydamir)"
+      footerLeft: "Открытый каталог socialmediamisha без трекеров и сборки"
     },
     en: {
-      brandTitle: "Creator Stack",
-      authorLabel: "Curated by @mihail_radzik",
-      heroBadge: "Curated archive · 2026",
+      brandTitle: "socialmediamisha",
       heroTitle: "Free stack for video and web design",
       heroSubtitle:
-        "51 vetted free, open-source, and fair freemium tools for video, motion, and web design — zero paywalls or watermarked exports.",
-      kpiTools: "vetted tools",
-      kpiCats: "categories",
-      kpiFreeOss: "100% free & OSS",
-      stageVideoTag: "For video",
-      stageVideoTitle: "Remotion timeline",
-      stageVideoSub: "Code-to-video, captions, and clean stock media",
-      stageWebTag: "For web",
-      stageWebTitle: "UI motion curve",
-      stageWebSub: "GSAP easings, React Bits, and Tailwind tokens",
-      stageFreeTag: "Open Source",
-      stageFreeTitle: "Free & open-source core",
-      stageFreeSub: "47 free/OSS tools plus 4 fair freemium picks",
+        "51 working tools without paywalls or watermarks: 47 completely free or open-source and 4 fair freemium picks.",
+      heroCta: "Browse catalog",
+      heroCtaSub: "51 tools across 6 groups",
+      stageLabel: "Stack lanes",
+      stageMeta: "Select a lane to filter",
+      pauseLabel: "Pause",
+      playLabel: "Play",
       searchPlaceholder: "Search tools",
-      distributionLabel: "Catalog breakdown by category",
+      distributionLabel: "Tools by category",
       catAll: "All",
       purposeAll: "All tasks",
       purposeVideo: "For video",
@@ -85,7 +68,7 @@ window.TOOLKIT_DATA = {
       bookmarkRemove: "Remove bookmark",
       targetVideo: "Video",
       targetWeb: "Web",
-      featuredTag: "Core pick",
+      featuredTag: "Core",
       pricingLabels: {
         free: "Free",
         oss: "Open Source",
@@ -93,40 +76,39 @@ window.TOOLKIT_DATA = {
       },
       emptyTitle: "No tools match these filters",
       emptyAction: "Reset filters",
-      footerLeft: "Static GitHub Pages directory with zero build step and zero trackers",
-      footerRight: "Craft discipline informed by unslop (CC BY 4.0 @heydamir)"
+      footerLeft: "Open directory by socialmediamisha with zero trackers"
     }
   },
 
   categories: [
     {
       id: "video",
-      color: "#22C55E",
+      color: "#B94A2C",
       label: { ru: "Видео и моушн", en: "Video & motion" }
     },
     {
       id: "media",
-      color: "#38BDF8",
+      color: "#4C647E",
       label: { ru: "Медиа, стоки и голос", en: "Media, stock & voice" }
     },
     {
       id: "design",
-      color: "#A78BFA",
+      color: "#6F5A46",
       label: { ru: "UI и веб-дизайн", en: "UI & web design" }
     },
     {
       id: "fonts",
-      color: "#F59E0B",
+      color: "#9A6E3A",
       label: { ru: "Шрифты и иконки", en: "Fonts & icons" }
     },
     {
       id: "skills",
-      color: "#F472B6",
+      color: "#4E6E58",
       label: { ru: "Скиллы для ИИ", en: "AI agent skills" }
     },
     {
       id: "utils",
-      color: "#94A3B8",
+      color: "#7D5B69",
       label: { ru: "Dev-утилиты", en: "Dev utilities" }
     }
   ],
@@ -363,8 +345,8 @@ window.TOOLKIT_DATA = {
         en: "Standard WebGL/WebGPU JavaScript 3D engine for interactive web scenes, shaders, and @remotion/three compositions."
       },
       caveat: {
-        ru: "100% бесплатно (MIT); именно на ней работает 3D-кристалл в шапке этого каталога.",
-        en: "100% free (MIT); powers the live 3D sculpture in this site's hero."
+        ru: "100% бесплатно (MIT); используется в видеокомпозициях Vectarium и веб-сценах.",
+        en: "100% free (MIT); used across Vectarium compositions and interactive web scenes."
       }
     },
     {

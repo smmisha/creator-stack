@@ -4,11 +4,8 @@
   const DATA = window.TOOLKIT_DATA;
   if (!DATA) return;
 
-  const STORAGE_LANG = "creator_stack_lang_v1";
-  const STORAGE_SAVED = "creator_stack_saved_v1";
-
-  // Showcase runs smooth, gentle non-vestibular motion by default; pause only if explicit pause flag set
-  const motionPaused = false;
+  const STORAGE_LANG = "socialmediamisha_stack_lang_v1";
+  const STORAGE_SAVED = "socialmediamisha_stack_saved_v1";
 
   const urlParams = new URLSearchParams(window.location.search);
   const urlLang = urlParams.get("lang");
@@ -33,39 +30,26 @@
     purpose: "all",
     pricing: "all",
     savedOnly: false,
-    query: ""
+    query: "",
+    stagePaused: false
   };
 
   const els = {
-    scrollProgress: document.getElementById("scroll-progress"),
     brandTitle: document.getElementById("brand-title"),
-    authorLink: document.getElementById("author-link"),
-    heroBand: document.querySelector(".hero-band"),
-    heroBadge: document.getElementById("hero-badge"),
     heroTitle: document.getElementById("hero-title"),
     heroSubtitle: document.getElementById("hero-subtitle"),
-    kpiToolsLbl: document.getElementById("kpi-tools-lbl"),
-    kpiFreeLbl: document.getElementById("kpi-free-lbl"),
-    kpiCatsLbl: document.getElementById("kpi-cats-lbl"),
-    heroStage: document.getElementById("hero-stage"),
-    stageVideoBtn: document.getElementById("stage-video-btn"),
-    stageWebBtn: document.getElementById("stage-web-btn"),
-    stageFreeBtn: document.getElementById("stage-free-btn"),
-    stageVideoTag: document.getElementById("stage-video-tag"),
-    stageVideoTitle: document.getElementById("stage-video-title"),
-    stageVideoSub: document.getElementById("stage-video-sub"),
-    stageTimecode: document.getElementById("stage-timecode"),
-    stageWebTag: document.getElementById("stage-web-tag"),
-    stageWebTitle: document.getElementById("stage-web-title"),
-    stageWebSub: document.getElementById("stage-web-sub"),
-    stageFreeTag: document.getElementById("stage-free-tag"),
-    stageFreeTitle: document.getElementById("stage-free-title"),
-    stageFreeSub: document.getElementById("stage-free-sub"),
-    bezierPath: document.getElementById("bezier-path"),
-    bezierDot: document.getElementById("bezier-dot"),
-    marqueeTrack: document.getElementById("marquee-track"),
+    heroJumpBtn: document.getElementById("hero-jump-btn"),
+    heroCtaMain: document.getElementById("hero-cta-main"),
+    heroCtaSub: document.getElementById("hero-cta-sub"),
+    stackStage: document.getElementById("stack-stage"),
+    stageLabel: document.getElementById("stage-label"),
+    stageMeta: document.getElementById("stage-meta"),
+    stageLanesList: document.getElementById("stage-lanes-list"),
+    stageToggleBtn: document.getElementById("stage-toggle-btn"),
+    stageToggleLabel: document.getElementById("stage-toggle-label"),
     catalogStart: document.getElementById("catalog-start"),
     searchInput: document.getElementById("search-input"),
+    searchLabel: document.getElementById("search-label"),
     breakdownLabel: document.getElementById("breakdown-label"),
     shownCounter: document.getElementById("shown-counter"),
     breakdownTrack: document.getElementById("breakdown-track"),
@@ -81,8 +65,16 @@
     emptyTitle: document.getElementById("empty-title"),
     resetFiltersBtn: document.getElementById("reset-filters-btn"),
     footerLeft: document.getElementById("footer-left"),
-    footerRight: document.getElementById("footer-right"),
     toast: document.getElementById("toast")
+  };
+
+  const LANE_SAMPLES = {
+    video: "Remotion, Rough.js, Three.js",
+    media: "Real-ESRGAN, Openverse, Drama 3",
+    design: "shadcn/ui, React Bits, tweakcn",
+    fonts: "Google Fonts, Iconify, Fontshare",
+    skills: "Impeccable, Hallmark, UI/UX Pro Max",
+    utils: "Cloudflare Tunnel, PhoText, Tost UI"
   };
 
   let toastTimer = null;
@@ -100,7 +92,7 @@
     svg.setAttribute("viewBox", "0 0 24 24");
     svg.setAttribute("fill", fillMode || "none");
     svg.setAttribute("stroke", "currentColor");
-    svg.setAttribute("stroke-width", "1.5");
+    svg.setAttribute("stroke-width", "1.6");
     svg.setAttribute("stroke-linecap", "round");
     svg.setAttribute("stroke-linejoin", "round");
     svg.setAttribute("aria-hidden", "true");
@@ -174,28 +166,45 @@
     });
   }
 
-  function renderMarquee() {
-    if (!els.marqueeTrack) return;
-    const catById = {};
-    DATA.categories.forEach(function (c) {
-      catById[c.id] = c;
-    });
-    const featured = DATA.tools.filter(function (t) {
-      return t.featured;
-    });
-    const items = featured.concat(featured);
-    els.marqueeTrack.textContent = "";
-    items.forEach(function (t) {
-      const span = document.createElement("span");
-      span.className = "marquee-item";
-      const dot = document.createElement("span");
-      dot.className = "marquee-dot";
-      dot.style.backgroundColor = (catById[t.category] && catById[t.category].color) || "#22C55E";
+  function renderHeroLanes() {
+    if (!els.stageLanesList) return;
+    const counts = categoryCounts();
+    els.stageLanesList.textContent = "";
+
+    DATA.categories.forEach(function (cat) {
+      const cnt = counts[cat.id] || 0;
+      const active = state.category === cat.id;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "lane-row";
+      btn.style.setProperty("--lane-color", cat.color);
+      btn.setAttribute("aria-pressed", String(active));
+
       const name = document.createElement("span");
-      name.textContent = t.name;
-      span.appendChild(dot);
-      span.appendChild(name);
-      els.marqueeTrack.appendChild(span);
+      name.className = "lane-name";
+      name.textContent = cat.label[state.lang];
+
+      const clip = document.createElement("span");
+      clip.className = "lane-clip";
+      clip.textContent = LANE_SAMPLES[cat.id] || cat.label[state.lang];
+
+      const countEl = document.createElement("span");
+      countEl.className = "lane-count";
+      countEl.textContent = String(cnt);
+
+      btn.appendChild(name);
+      btn.appendChild(clip);
+      btn.appendChild(countEl);
+
+      btn.addEventListener("click", function () {
+        state.category = state.category === cat.id ? "all" : cat.id;
+        state.savedOnly = false;
+        renderAll();
+        els.catalogStart.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      els.stageLanesList.appendChild(btn);
     });
   }
 
@@ -220,7 +229,7 @@
       seg.title = cat.label[state.lang] + " (" + cnt + ")";
       seg.addEventListener("click", function () {
         state.category = state.category === cat.id ? "all" : cat.id;
-        renderAll(true);
+        renderAll();
       });
       els.breakdownTrack.appendChild(seg);
 
@@ -228,20 +237,20 @@
       leg.type = "button";
       leg.className = "legend-item";
       leg.setAttribute("aria-pressed", String(active));
-      const dot = document.createElement("span");
-      dot.className = "legend-dot";
-      dot.style.backgroundColor = cat.color;
+      const swatch = document.createElement("span");
+      swatch.className = "legend-swatch";
+      swatch.style.backgroundColor = cat.color;
       const txt = document.createElement("span");
       txt.textContent = cat.label[state.lang];
       const num = document.createElement("span");
       num.className = "legend-num";
       num.textContent = String(cnt);
-      leg.appendChild(dot);
+      leg.appendChild(swatch);
       leg.appendChild(txt);
       leg.appendChild(num);
       leg.addEventListener("click", function () {
         state.category = state.category === cat.id ? "all" : cat.id;
-        renderAll(true);
+        renderAll();
       });
       els.breakdownLegend.appendChild(leg);
     });
@@ -266,7 +275,7 @@
       btn.appendChild(cSpan);
       btn.addEventListener("click", function () {
         state.category = id;
-        renderAll(true);
+        renderAll();
       });
       els.categoryPills.appendChild(btn);
     }
@@ -277,26 +286,7 @@
     });
   }
 
-  function animateGridCards() {
-    if (motionPaused || (typeof window.gsap !== "object" && typeof window.gsap !== "function")) return;
-    const cards = els.toolsGrid.querySelectorAll(".tool-card");
-    if (!cards.length) return;
-    window.gsap.killTweensOf(cards);
-    window.gsap.fromTo(
-      cards,
-      { opacity: 0, y: 14 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.34,
-        stagger: { each: 0.018, from: "start" },
-        ease: "power2.out",
-        clearProps: "transform,opacity"
-      }
-    );
-  }
-
-  function renderGrid(shouldAnimate) {
+  function renderGrid() {
     const T = DATA.ui[state.lang];
     const items = filteredTools();
     els.shownCounter.textContent = items.length + " / " + DATA.tools.length + " " + T.statShown;
@@ -315,30 +305,20 @@
       catById[c.id] = c;
     });
 
-    items.forEach(function (tool, idx) {
+    items.forEach(function (tool) {
       const cat = catById[tool.category];
       const isSaved = savedIds.has(tool.id);
 
       const card = document.createElement("article");
       card.className = "tool-card";
-      if (cat) {
-        card.style.setProperty("--cat-color", cat.color);
-      }
 
       const top = document.createElement("div");
       top.className = "tool-card-top";
 
-      const idRow = document.createElement("div");
-      idRow.className = "tool-id-row";
-
-      const numSpan = document.createElement("span");
-      numSpan.className = "tool-index";
-      numSpan.textContent = String(idx + 1).padStart(2, "0");
-
       const heading = document.createElement("div");
       heading.className = "tool-heading";
 
-      const nameEl = document.createElement("h2");
+      const nameEl = document.createElement("h3");
       nameEl.className = "tool-name";
       nameEl.textContent = tool.name;
 
@@ -348,19 +328,12 @@
 
       heading.appendChild(nameEl);
       heading.appendChild(domEl);
-      idRow.appendChild(numSpan);
-      idRow.appendChild(heading);
 
       const badge = document.createElement("span");
-      badge.className = "status-badge";
-      const sDot = document.createElement("span");
-      sDot.className = "status-dot" + (tool.pricing === "freemium" ? " is-freemium" : "");
-      const sTxt = document.createElement("span");
-      sTxt.textContent = T.pricingLabels[tool.pricing] || tool.pricing;
-      badge.appendChild(sDot);
-      badge.appendChild(sTxt);
+      badge.className = "status-badge" + (tool.pricing === "freemium" ? " is-freemium" : "");
+      badge.textContent = T.pricingLabels[tool.pricing] || tool.pricing;
 
-      top.appendChild(idRow);
+      top.appendChild(heading);
       top.appendChild(badge);
 
       const body = document.createElement("div");
@@ -381,12 +354,12 @@
 
       const catTag = document.createElement("span");
       catTag.className = "meta-tag";
-      const catDot = document.createElement("span");
-      catDot.className = "legend-dot";
-      catDot.style.backgroundColor = cat ? cat.color : "#94A3B8";
+      const catSwatch = document.createElement("span");
+      catSwatch.className = "legend-swatch";
+      catSwatch.style.backgroundColor = cat ? cat.color : "#6F5A46";
       const catName = document.createElement("span");
       catName.textContent = cat ? cat.label[state.lang] : tool.category;
-      catTag.appendChild(catDot);
+      catTag.appendChild(catSwatch);
       catTag.appendChild(catName);
       tags.appendChild(catTag);
 
@@ -436,7 +409,7 @@
         try {
           localStorage.setItem(STORAGE_SAVED, JSON.stringify(Array.from(savedIds)));
         } catch (_) {}
-        renderGrid(false);
+        renderGrid();
       });
 
       const openLink = document.createElement("a");
@@ -461,72 +434,26 @@
       card.appendChild(footer);
       els.toolsGrid.appendChild(card);
     });
-
-    if (shouldAnimate) {
-      animateGridCards();
-    }
   }
 
-  function setHeroTitleWords(text, animateWords) {
-    els.heroTitle.textContent = "";
-    const words = String(text || "").trim().split(/\s+/);
-    const wordSpans = [];
-    words.forEach(function (word, idx) {
-      const clip = document.createElement("span");
-      clip.className = "hero-word-clip";
-      const span = document.createElement("span");
-      span.className = "hero-word";
-      span.textContent = word;
-      clip.appendChild(span);
-      els.heroTitle.appendChild(clip);
-      if (idx < words.length - 1) {
-        els.heroTitle.appendChild(document.createTextNode(" "));
-      }
-      wordSpans.push(span);
-    });
-    if (animateWords && !motionPaused && window.gsap) {
-      window.gsap.fromTo(
-        wordSpans,
-        { yPercent: 115, opacity: 0 },
-        {
-          yPercent: 0,
-          opacity: 1,
-          duration: 0.65,
-          stagger: 0.045,
-          ease: "expo.out",
-          clearProps: "transform,opacity"
-        }
-      );
-    }
-  }
-
-  function applyStaticCopy(animateTitle) {
+  function applyStaticCopy() {
     const T = DATA.ui[state.lang];
     document.documentElement.lang = state.lang;
     els.brandTitle.textContent = T.brandTitle;
-    els.authorLink.textContent = T.authorLabel;
-    els.heroBadge.textContent = T.heroBadge;
-    setHeroTitleWords(T.heroTitle, Boolean(animateTitle));
+    els.heroTitle.textContent = T.heroTitle;
     els.heroSubtitle.textContent = T.heroSubtitle;
-    els.kpiToolsLbl.textContent = T.kpiTools;
-    els.kpiFreeLbl.textContent = T.kpiFreeOss;
-    els.kpiCatsLbl.textContent = T.kpiCats;
-    els.stageVideoTag.textContent = T.stageVideoTag;
-    els.stageVideoTitle.textContent = T.stageVideoTitle;
-    els.stageVideoSub.textContent = T.stageVideoSub;
-    els.stageWebTag.textContent = T.stageWebTag;
-    els.stageWebTitle.textContent = T.stageWebTitle;
-    els.stageWebSub.textContent = T.stageWebSub;
-    els.stageFreeTag.textContent = T.stageFreeTag;
-    els.stageFreeTitle.textContent = T.stageFreeTitle;
-    els.stageFreeSub.textContent = T.stageFreeSub;
+    els.heroCtaMain.textContent = T.heroCta;
+    els.heroCtaSub.textContent = T.heroCtaSub;
+    els.stageLabel.textContent = T.stageLabel;
+    els.stageMeta.textContent = T.stageMeta;
+    els.stageToggleLabel.textContent = state.stagePaused ? T.playLabel : T.pauseLabel;
     els.searchInput.placeholder = T.searchPlaceholder;
+    els.searchLabel.textContent = T.searchPlaceholder;
     els.breakdownLabel.textContent = T.distributionLabel;
     els.savedBtnLabel.textContent = T.savedBtn;
     els.emptyTitle.textContent = T.emptyTitle;
     els.resetFiltersBtn.textContent = T.emptyAction;
     els.footerLeft.textContent = T.footerLeft;
-    els.footerRight.textContent = T.footerRight;
 
     document.querySelectorAll(".lang-btn").forEach(function (btn) {
       btn.setAttribute("aria-pressed", String(btn.dataset.lang === state.lang));
@@ -545,207 +472,60 @@
     });
   }
 
-  function renderAll(shouldAnimateGrid, animateTitle) {
-    applyStaticCopy(animateTitle);
+  function renderAll() {
+    applyStaticCopy();
+    renderHeroLanes();
     renderBreakdown();
     renderCategoryPills();
-    renderGrid(Boolean(shouldAnimateGrid));
+    renderGrid();
   }
 
-  // Interactive cursor spotlight on tool cards + Liquid Glass glint on Hero Stage tiles
-  function initSpotlightGrid() {
-    els.toolsGrid.addEventListener("pointermove", function (e) {
-      const card = e.target.closest(".tool-card");
-      if (!card) return;
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty("--mx", (e.clientX - rect.left).toFixed(1) + "px");
-      card.style.setProperty("--my", (e.clientY - rect.top).toFixed(1) + "px");
-    });
-
-    if (els.heroStage) {
-      els.heroStage.addEventListener("pointermove", function (e) {
-        const tile = e.target.closest(".stage-tile");
-        if (!tile) return;
-        const rect = tile.getBoundingClientRect();
-        tile.style.setProperty("--gx", (e.clientX - rect.left).toFixed(1) + "px");
-        tile.style.setProperty("--gy", (e.clientY - rect.top).toFixed(1) + "px");
-      });
-    }
-  }
-
-  // Live SVG bezier curve traveler + Remotion timeline timecode in hero stage
-  function initStageMicroLoops() {
-    if (motionPaused) return;
-    const path = els.bezierPath;
-    const dot = els.bezierDot;
-    const pathLen = path && typeof path.getTotalLength === "function" ? path.getTotalLength() : 0;
-
-    function tick(nowMs) {
-      if (!document.hidden) {
-        // Bezier dot ping-pong
-        if (path && dot && pathLen > 0) {
-          const cycle = (nowMs % 3200) / 3200;
-          const p = cycle < 0.5 ? cycle * 2 : 2 - cycle * 2;
-          const eased = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
-          const pt = path.getPointAtLength(eased * pathLen);
-          dot.setAttribute("cx", pt.x.toFixed(2));
-          dot.setAttribute("cy", pt.y.toFixed(2));
-        }
-
-        // Remotion live timeline readout synced with 5.2s CSS sweep
-        if (els.stageTimecode) {
-          const tc = (nowMs % 5200) / 5200;
-          const sweep = tc < 0.5 ? tc * 2 : 2 - tc * 2;
-          const curSec = Math.round(sweep * 524);
-          const mm = String(Math.floor(curSec / 60)).padStart(2, "0");
-          const ss = String(curSec % 60).padStart(2, "0");
-          els.stageTimecode.textContent = mm + ":" + ss + " → 08:44 · 60fps";
-        }
-      }
-      window.requestAnimationFrame(tick);
-    }
-    window.requestAnimationFrame(tick);
-  }
-
-  // GSAP 3 Choreography, KPI count-up, parallax stage & scroll progress
-  function initGsapMotion() {
-    // Scroll progress bar (works natively cleanly even without ScrollTrigger)
-    function updateScrollBar() {
-      const doc = document.documentElement;
-      const maxScroll = Math.max(1, doc.scrollHeight - window.innerHeight);
-      const ratio = Math.min(1, Math.max(0, window.scrollY / maxScroll));
-      els.scrollProgress.style.transform = "scaleX(" + ratio.toFixed(4) + ")";
-    }
-    window.addEventListener("scroll", updateScrollBar, { passive: true });
-    updateScrollBar();
-
-    if (motionPaused || !window.gsap) return;
-    const gsap = window.gsap;
-    if (window.ScrollTrigger) {
-      gsap.registerPlugin(window.ScrollTrigger);
-    }
-
-    // Hero entrance choreography
-    gsap.fromTo(
-      ".hero-badge, .hero-subtitle, .hero-kpis, .search-wrap",
-      { opacity: 0, y: 14 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.55,
-        stagger: 0.06,
-        ease: "power2.out",
-        clearProps: "transform,opacity"
-      }
-    );
-
-    gsap.fromTo(
-      "#hero-stage .stage-tile",
-      { opacity: 0, y: 18 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.08,
-        delay: 0.08,
-        ease: "expo.out",
-        clearProps: "transform,opacity"
-      }
-    );
-
-    // Count-up hero metrics (38 / 6 / 13)
-    document.querySelectorAll(".kpi-val[data-count-target]").forEach(function (el) {
-      const target = Number(el.dataset.countTarget || 0);
-      const obj = { v: 0 };
-      gsap.to(obj, {
-        v: target,
-        duration: 0.9,
-        ease: "power2.out",
-        onUpdate: function () {
-          el.textContent = String(Math.round(obj.v));
-        }
-      });
-    });
-
-    // Subtle pointer parallax on hero preview stage (desktop only)
-    if (window.matchMedia("(pointer: fine)").matches && els.heroStage) {
-      const rx = gsap.quickTo(els.heroStage, "rotationX", { duration: 0.45, ease: "power2.out" });
-      const ry = gsap.quickTo(els.heroStage, "rotationY", { duration: 0.45, ease: "power2.out" });
-      gsap.set(els.heroStage, { transformPerspective: 900 });
-      els.heroBand.addEventListener("pointermove", function (e) {
-        if (window.innerWidth <= 920) return;
-        const rect = els.heroBand.getBoundingClientRect();
-        const nx = (e.clientX - rect.left) / rect.width - 0.5;
-        const ny = (e.clientY - rect.top) / rect.height - 0.5;
-        ry(nx * 5);
-        rx(-ny * 4);
-      });
-      els.heroBand.addEventListener("pointerleave", function () {
-        rx(0);
-        ry(0);
-      });
-    }
-  }
-
-  // Interactive Hero Stage shortcuts -> filter & smooth scroll
-  els.stageVideoBtn.addEventListener("click", function () {
-    state.category = "all";
-    state.savedOnly = false;
-    state.purpose = "video";
-    renderAll(true, false);
-    els.catalogStart.scrollIntoView({ behavior: motionPaused ? "auto" : "smooth", block: "start" });
+  // Hero actions
+  els.heroJumpBtn.addEventListener("click", function () {
+    els.catalogStart.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
-  els.stageWebBtn.addEventListener("click", function () {
-    state.category = "all";
-    state.savedOnly = false;
-    state.purpose = "web";
-    renderAll(true, false);
-    els.catalogStart.scrollIntoView({ behavior: motionPaused ? "auto" : "smooth", block: "start" });
+  els.stageToggleBtn.addEventListener("click", function () {
+    state.stagePaused = !state.stagePaused;
+    els.stackStage.classList.toggle("is-paused", state.stagePaused);
+    els.stageToggleBtn.setAttribute("aria-pressed", String(state.stagePaused));
+    const T = DATA.ui[state.lang];
+    els.stageToggleLabel.textContent = state.stagePaused ? T.playLabel : T.pauseLabel;
   });
 
-  els.stageFreeBtn.addEventListener("click", function () {
-    state.category = "all";
-    state.purpose = "all";
-    state.savedOnly = false;
-    state.pricing = "free_oss";
-    renderAll(true, false);
-    els.catalogStart.scrollIntoView({ behavior: motionPaused ? "auto" : "smooth", block: "start" });
-  });
-
-  // Event wiring
+  // Controls
   document.querySelectorAll(".lang-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
       state.lang = btn.dataset.lang === "en" ? "en" : "ru";
       try {
         localStorage.setItem(STORAGE_LANG, state.lang);
       } catch (_) {}
-      renderAll(true, true);
+      renderAll();
     });
   });
 
   els.purposeGroup.querySelectorAll(".seg-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
       state.purpose = btn.dataset.purpose;
-      renderAll(true, false);
+      renderAll();
     });
   });
 
   els.pricingGroup.querySelectorAll(".seg-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
       state.pricing = btn.dataset.pricing;
-      renderAll(true, false);
+      renderAll();
     });
   });
 
   els.savedFilterBtn.addEventListener("click", function () {
     state.savedOnly = !state.savedOnly;
-    renderAll(true, false);
+    renderAll();
   });
 
   els.searchInput.addEventListener("input", function () {
     state.query = els.searchInput.value;
-    renderGrid(true);
+    renderGrid();
   });
 
   els.resetFiltersBtn.addEventListener("click", function () {
@@ -755,7 +535,7 @@
     state.savedOnly = false;
     state.query = "";
     els.searchInput.value = "";
-    renderAll(true, false);
+    renderAll();
   });
 
   document.addEventListener("keydown", function (e) {
@@ -769,16 +549,12 @@
       if (els.searchInput.value) {
         state.query = "";
         els.searchInput.value = "";
-        renderGrid(true);
+        renderGrid();
       } else {
         els.searchInput.blur();
       }
     }
   });
 
-  renderMarquee();
-  renderAll(true, true);
-  initSpotlightGrid();
-  initStageMicroLoops();
-  initGsapMotion();
+  renderAll();
 })();
